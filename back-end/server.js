@@ -55,7 +55,7 @@ app.delete('/api/products/:id', (req, res) => {
 });
 
 //cart back end
-app.post('/api/cart/:id', (req, res) => {
+app.post('/api/cart/:id/:name', (req, res) => {
   let id = req.params.id;
   console.log("cart post id: ", id);
   const foundItem = cart.find(item => item.id == id);
@@ -66,6 +66,7 @@ app.post('/api/cart/:id', (req, res) => {
   else {
     let item = {
       id: id,
+      name: req.params.name,
       quantity: 1
     };
     cart.push(item);
